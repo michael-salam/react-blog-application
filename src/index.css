@@ -31,7 +31,7 @@ select {
 }
 
 .heading {
-  @apply tracking-tighter;
+  @apply tracking-tight leading-[100%];
 }
 
 .heading-1 {

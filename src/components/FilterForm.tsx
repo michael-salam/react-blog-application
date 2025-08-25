@@ -28,7 +28,7 @@ const FilterForm = ({
           id="search"
           onChange={(e) => handleUpdateFilters(e)}
           placeholder="Search something"
-          className="!border-black flex-1"
+          className="!border-black/60"
         />
       </div>
       <div className="flex items-end flex-wrap gap-2 justify-between">
