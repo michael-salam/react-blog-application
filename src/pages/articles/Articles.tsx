@@ -2,6 +2,7 @@ import { articlesData } from "../../placeholderData";
 import ArticleCard from "../../components/ArticleCard";
 import FilterForm from "../../components/FilterForm";
 import { useSearchParams } from "react-router";
+import { motion } from "motion/react";
 
 const Articles = () => {
   const [searchParams] = useSearchParams();
@@ -28,7 +29,10 @@ const Articles = () => {
   });
 
   return (
-    <main>
+    <motion.main
+      initial={{ transform: "translateY(500px)", opacity: 0 }}
+      animate={{ transform: "translateY(0)", opacity: 1 }}
+    >
       <header className="py-8">
         <h1 className="heading heading-1 text-center mb-4">Articles</h1>
         <p className="text-2xl mb-4">Browse all articles</p>
@@ -46,7 +50,7 @@ const Articles = () => {
           No articles match your filter!
         </p>
       )}
-    </main>
+    </motion.main>
   );
 };
 
