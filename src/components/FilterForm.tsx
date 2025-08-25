@@ -2,7 +2,15 @@ import { X } from "lucide-react";
 import { topics } from "../placeholderData";
 import { useSearchParams } from "react-router";
 
-const FilterForm = () => {
+const FilterForm = ({
+  topic,
+  readtime,
+  date,
+}: {
+  topic: string | null;
+  readtime: string | null;
+  date: string | null;
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const handleUpdateFilters = (e: any) => {
@@ -18,7 +26,7 @@ const FilterForm = () => {
         <select
           name="topic"
           id="topic"
-          defaultValue="select"
+          defaultValue={topic || "select"}
           className="min-w-[20%]"
           onChange={(e) => handleUpdateFilters(e)}
         >
@@ -41,7 +49,7 @@ const FilterForm = () => {
         <select
           name="readtime"
           id="readtime"
-          defaultValue="select"
+          defaultValue={readtime || "select"}
           className="min-w-[20%]"
           onChange={(e) => handleUpdateFilters(e)}
         >
@@ -60,8 +68,9 @@ const FilterForm = () => {
           type="date"
           name="date"
           id="date"
-          className="min-w-[20%]"
+          defaultValue={date || ""}
           onChange={(e) => handleUpdateFilters(e)}
+          className="min-w-[20%]"
         />
       </div>
       {searchParams.size > 0 && (

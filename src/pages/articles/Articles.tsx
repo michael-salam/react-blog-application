@@ -11,7 +11,15 @@ const Articles = () => {
 
   const matchedArticles = articlesData.filter((article: any) => {
     if (topic && !article.tags.includes(topic)) return false;
-    if (readtime && article.readtime !== parseInt(readtime)) return false;
+    if (readtime) {
+      if (readtime === "under-5" && article.readTime >= 5) return false;
+      if (
+        readtime === "5-10" &&
+        (article.readtime < 5 || article.readTime > 10)
+      )
+        return false;
+      if (readtime === "10-plus" && article.readTime <= 10) return false;
+    }
     if (date && article.date !== date) return false;
     return true;
   });
@@ -21,7 +29,7 @@ const Articles = () => {
       <header className="py-8">
         <h1 className="heading heading-1 text-center mb-4">Articles</h1>
         <p className="text-2xl mb-4">Browse all articles</p>
-        <FilterForm />
+        <FilterForm topic={topic} readtime={readtime} date={date} />
       </header>
 
       {matchedArticles.length ? (

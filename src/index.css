@@ -32,7 +32,7 @@ select {
 }
 
 .heading {
-  @apply font-black uppercase leading-[90%] tracking-tighter;
+  @apply tracking-tighter;
 }
 
 .heading-1 {
