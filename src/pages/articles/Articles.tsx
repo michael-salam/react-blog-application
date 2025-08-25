@@ -5,11 +5,14 @@ import { useSearchParams } from "react-router";
 
 const Articles = () => {
   const [searchParams] = useSearchParams();
+  const query = searchParams.get("query");
   const topic = searchParams.get("topic");
   const readtime = searchParams.get("readtime");
   const date = searchParams.get("date");
 
   const matchedArticles = articlesData.filter((article: any) => {
+    if (query && !article.title.toLowerCase().includes(query.toLowerCase()))
+      return false;
     if (topic && !article.tags.includes(topic)) return false;
     if (readtime) {
       if (readtime === "under-5" && article.readTime >= 5) return false;
