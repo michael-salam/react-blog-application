@@ -15,12 +15,12 @@ const Home = () => {
         <motion.p
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
-          className="mb-8 text-2xl"
+          className="mb-8 text-[clamp(1.125rem,_1.0157rem_+_0.5381vw,_1.5rem)]"
         >
           This is the home page
         </motion.p>
 
-        <div className="flex gap-4 items-center justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 items-center justify-center">
           <motion.div
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
@@ -30,7 +30,7 @@ const Home = () => {
           >
             <Link
               to="/profile"
-              className="bg-black text-2xl rounded-full font-medium text-white px-8 py-3"
+              className="bg-black text-[clamp(1.125rem,_1.0157rem_+_0.5381vw,_1.5rem)] rounded-full font-medium text-white px-8 py-3"
             >
               Create profile
             </Link>
@@ -45,7 +45,7 @@ const Home = () => {
           >
             <Link
               to="/articles"
-              className="text-2xl rounded-full font-medium text-black border-2 border-black px-8 py-3"
+              className="text-[clamp(1.125rem,_1.0157rem_+_0.5381vw,_1.5rem)] rounded-full font-medium text-black border-2 border-black px-8 py-3"
             >
               View articles
             </Link>
