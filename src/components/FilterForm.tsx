@@ -1,6 +1,7 @@
 import { Search, X } from "lucide-react";
 import { topics } from "../placeholderData";
 import { useSearchParams } from "react-router";
+import { AnimatePresence, motion } from "motion/react";
 
 const FilterForm = ({
   topic,
@@ -84,15 +85,19 @@ const FilterForm = ({
             className="min-w-[20%]"
           />
         </div>
-        {searchParams.size > 0 && (
-          <button
-            onClick={() => setSearchParams({})}
-            type="reset"
-            className="bg-black text-white size-10 rounded-full grid place-content-center"
-          >
-            <X />
-          </button>
-        )}
+        <AnimatePresence>
+          {searchParams.size > 0 && (
+            <motion.button
+              key="clearbtn"
+              exit={{ opacity: 0 }}
+              onClick={() => setSearchParams({})}
+              type="reset"
+              className="bg-black text-white size-10 rounded-full grid place-content-center"
+            >
+              <X />
+            </motion.button>
+          )}
+        </AnimatePresence>
       </div>
     </form>
   );
