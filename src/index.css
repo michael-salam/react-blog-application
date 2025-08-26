@@ -43,5 +43,5 @@ select {
 }
 
 .simple-editor-wrapper {
-  width: 100% !important;
+  @apply !w-full;
 }
