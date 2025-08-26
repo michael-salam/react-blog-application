@@ -1,11 +1,12 @@
 import { useParams } from "react-router";
 import { articlesData } from "../../placeholderData";
 import { motion } from "motion/react";
+import type { Article } from "../../placeholderTypes";
 
 const ArticleDetails = () => {
   const { slug } = useParams();
   const matchedArticle = articlesData.filter(
-    (article: any) => article.slug === slug
+    (article: Article) => article.slug === slug
   )[0];
 
   return (

@@ -1,6 +1,7 @@
 import { Link } from "react-router";
+import type { Article } from "../placeholderTypes";
 
-const ArticleCard = ({ article }: { article: any }) => {
+const ArticleCard = ({ article }: { article: Article }) => {
   return (
     <div className="text-left">
       <Link to={`/articles/${article.slug}`} className="w-full h-48 ">

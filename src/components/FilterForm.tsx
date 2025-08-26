@@ -1,4 +1,4 @@
-import { Search, X } from "lucide-react";
+import { X } from "lucide-react";
 import { topics } from "../placeholderData";
 import { useSearchParams } from "react-router";
 import { AnimatePresence, motion } from "motion/react";
@@ -14,7 +14,11 @@ const FilterForm = ({
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleUpdateFilters = (e: any) => {
+  const handleUpdateFilters = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLSelectElement>
+  ) => {
     const params = new URLSearchParams(searchParams);
     params.set(e.target.name, e.target.value);
     setSearchParams(params);

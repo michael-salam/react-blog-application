@@ -3,6 +3,7 @@ import ArticleCard from "../../components/ArticleCard";
 import FilterForm from "../../components/FilterForm";
 import { useSearchParams } from "react-router";
 import { motion } from "motion/react";
+import type { Article } from "../../placeholderTypes";
 
 const Articles = () => {
   const [searchParams] = useSearchParams();
@@ -11,7 +12,7 @@ const Articles = () => {
   const readtime = searchParams.get("readtime");
   const date = searchParams.get("date");
 
-  const matchedArticles = articlesData.filter((article: any) => {
+  const matchedArticles = articlesData.filter((article: Article) => {
     if (query && !article.title.toLowerCase().includes(query.toLowerCase()))
       return false;
     if (topic && !article.tags.includes(topic)) return false;
@@ -19,7 +20,7 @@ const Articles = () => {
       if (readtime === "under-5" && article.readTime >= 5) return false;
       if (
         readtime === "5-10" &&
-        (article.readtime < 5 || article.readTime > 10)
+        (article.readTime < 5 || article.readTime > 10)
       )
         return false;
       if (readtime === "10-plus" && article.readTime <= 10) return false;
@@ -41,7 +42,7 @@ const Articles = () => {
 
       {matchedArticles.length ? (
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {matchedArticles.map((article: any) => (
+          {matchedArticles.map((article: Article) => (
             <ArticleCard article={article} key={article.id} />
           ))}
         </section>
