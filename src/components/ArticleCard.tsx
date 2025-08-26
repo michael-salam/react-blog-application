@@ -10,11 +10,11 @@ const ArticleCard = ({ article }: { article: Article }) => {
       transition={{ delay: 0.2 }}
       className="text-left"
     >
-      <Link to={`/articles/${article.slug}`} className="w-full h-48 ">
+      <Link to={`/articles/${article.slug}`} className="w-full h-48 block mb-4">
         <img
           src={article.image}
           alt={article.title}
-          className="size-full object-cover mb-4 rounded-2xl"
+          className="size-full object-cover rounded-2xl"
         />
       </Link>
 
