@@ -1,3 +1,4 @@
+import { Book, Edit } from "lucide-react";
 import { motion } from "motion/react";
 import { Link } from "react-router";
 
@@ -29,10 +30,11 @@ const Home = () => {
             onHoverStart={() => console.log("hover started!")}
           >
             <Link
-              to="/profile"
-              className="bg-black text-[clamp(1.125rem,_1.0157rem_+_0.5381vw,_1.5rem)] rounded-full font-medium text-white px-8 py-3"
+              to="/write"
+              className="bg-black flex items-center gap-2 text-[clamp(1.125rem,_1.0157rem_+_0.5381vw,_1.5rem)] rounded-full font-medium text-white px-8 py-3"
             >
-              Create profile
+              <span>Write an article</span>
+              <Edit />
             </Link>
           </motion.div>
 
@@ -45,9 +47,10 @@ const Home = () => {
           >
             <Link
               to="/articles"
-              className="text-[clamp(1.125rem,_1.0157rem_+_0.5381vw,_1.5rem)] rounded-full font-medium text-black border-2 border-black px-8 py-3"
+              className="text-[clamp(1.125rem,_1.0157rem_+_0.5381vw,_1.5rem)] flex items-center gap-2 rounded-full font-medium text-black border-2 border-black px-8 py-3"
             >
-              View articles
+              <span>Read articles</span>
+              <Book />
             </Link>
           </motion.div>
         </div>
