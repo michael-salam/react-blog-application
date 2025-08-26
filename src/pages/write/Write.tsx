@@ -1,5 +1,7 @@
 import { motion } from "motion/react";
 
+import { SimpleEditor } from "../../components/tiptap-templates/simple/simple-editor";
+
 const Write = () => {
   return (
     <motion.main
@@ -12,6 +14,7 @@ const Write = () => {
           Write your own articles and get your ideas out into the world
         </p>
       </header>
+      <SimpleEditor />
     </motion.main>
   );
 };

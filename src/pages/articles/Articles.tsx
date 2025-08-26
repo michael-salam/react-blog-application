@@ -1,6 +1,6 @@
 import { articlesData } from "../../placeholderData";
-import ArticleCard from "../../components/ArticleCard";
-import FilterForm from "../../components/FilterForm";
+import ArticleCard from "../../ui/ArticleCard";
+import FilterForm from "../../ui/FilterForm";
 import { useSearchParams } from "react-router";
 import { motion } from "motion/react";
 import type { Article } from "../../placeholderTypes";
