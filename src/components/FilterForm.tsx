@@ -89,19 +89,15 @@ const FilterForm = ({
             className="min-w-[20%]"
           />
         </div>
-        <AnimatePresence>
-          {searchParams.size > 0 && (
-            <motion.button
-              key="clearbtn"
-              exit={{ opacity: 0 }}
-              onClick={() => setSearchParams({})}
-              type="reset"
-              className="bg-black text-white size-10 rounded-full grid place-content-center"
-            >
-              <X />
-            </motion.button>
-          )}
-        </AnimatePresence>
+        {searchParams.size > 0 && (
+          <button
+            onClick={() => setSearchParams({})}
+            type="reset"
+            className="bg-black text-white size-10 rounded-full !grid place-content-center"
+          >
+            <X />
+          </button>
+        )}
       </div>
     </form>
   );

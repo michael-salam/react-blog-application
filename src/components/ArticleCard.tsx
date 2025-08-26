@@ -1,9 +1,15 @@
 import { Link } from "react-router";
 import type { Article } from "../placeholderTypes";
+import { motion } from "motion/react";
 
 const ArticleCard = ({ article }: { article: Article }) => {
   return (
-    <div className="text-left">
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ delay: 0.2 }}
+      className="text-left"
+    >
       <Link to={`/articles/${article.slug}`} className="w-full h-48 ">
         <img
           src={article.image}
@@ -38,7 +44,7 @@ const ArticleCard = ({ article }: { article: Article }) => {
           Read more →
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
