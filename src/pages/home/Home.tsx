@@ -3,6 +3,9 @@ import { motion } from "motion/react";
 import { Link } from "react-router";
 
 const Home = () => {
+  const posts = localStorage.getItem("posts");
+  const parsedPosts = posts ? JSON.parse(posts) : [];
+
   return (
     <main>
       <header className="py-8">
@@ -55,6 +58,11 @@ const Home = () => {
           </motion.div>
         </div>
       </header>
+
+      {parsedPosts.length > 0 &&
+        parsedPosts.map((post: any, i: number) => (
+          <div key={i} dangerouslySetInnerHTML={{ __html: post.html }} />
+        ))}
     </main>
   );
 };

@@ -74,6 +74,7 @@ import { handleImageUpload, MAX_FILE_SIZE } from "@/lib/tiptap-utils";
 import "@/components/tiptap-templates/simple/simple-editor.scss";
 
 import content from "@/components/tiptap-templates/simple/data/content.json";
+import { Link } from "react-router";
 
 const MainToolbarContent = ({
   onHighlighterClick,
@@ -244,38 +245,62 @@ export function SimpleEditor() {
   }, [isMobile, mobileView]);
 
   return (
-    <div className="simple-editor-wrapper">
-      <EditorContext.Provider value={{ editor }}>
-        <Toolbar
-          ref={toolbarRef}
-          style={{
-            ...(isMobile
-              ? {
-                  bottom: `calc(100% - ${height - rect.y}px)`,
-                }
-              : {}),
-          }}
-        >
-          {mobileView === "main" ? (
-            <MainToolbarContent
-              onHighlighterClick={() => setMobileView("highlighter")}
-              onLinkClick={() => setMobileView("link")}
-              isMobile={isMobile}
-            />
-          ) : (
-            <MobileToolbarContent
-              type={mobileView === "highlighter" ? "highlighter" : "link"}
-              onBack={() => setMobileView("main")}
-            />
-          )}
-        </Toolbar>
+    <>
+      <div className="simple-editor-wrapper">
+        <EditorContext.Provider value={{ editor }}>
+          <Toolbar
+            ref={toolbarRef}
+            style={{
+              ...(isMobile
+                ? {
+                    bottom: `calc(100% - ${height - rect.y}px)`,
+                  }
+                : {}),
+            }}
+          >
+            {mobileView === "main" ? (
+              <MainToolbarContent
+                onHighlighterClick={() => setMobileView("highlighter")}
+                onLinkClick={() => setMobileView("link")}
+                isMobile={isMobile}
+              />
+            ) : (
+              <MobileToolbarContent
+                type={mobileView === "highlighter" ? "highlighter" : "link"}
+                onBack={() => setMobileView("main")}
+              />
+            )}
+          </Toolbar>
 
-        <EditorContent
-          editor={editor}
-          role="presentation"
-          className="simple-editor-content"
-        />
-      </EditorContext.Provider>
-    </div>
+          <EditorContent
+            editor={editor}
+            role="presentation"
+            className="simple-editor-content"
+          />
+        </EditorContext.Provider>
+      </div>
+
+      <Link
+        to="/"
+        onClick={() => {
+          const newPost = { html: editor?.getHTML() };
+
+          const posts = localStorage.getItem("posts");
+
+          if (!posts) {
+            const postArray = [newPost];
+            localStorage.setItem("posts", JSON.stringify(postArray));
+            return;
+          }
+
+          const parsedPosts = JSON.parse(posts);
+          parsedPosts.push(newPost);
+          localStorage.setItem("posts", JSON.stringify(parsedPosts));
+        }}
+        className="bg-white text-black px-8 py-4 rounded-full mt-8 mb-16 font-semibold cursor-pointer inline-block"
+      >
+        Submit
+      </Link>
+    </>
   );
 }
