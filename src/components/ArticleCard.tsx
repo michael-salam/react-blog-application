@@ -3,11 +3,11 @@ import { Link } from "react-router";
 const ArticleCard = ({ article }: { article: any }) => {
   return (
     <div className="text-left">
-      <Link to={`/articles/${article.slug}`}>
+      <Link to={`/articles/${article.slug}`} className="w-full h-48 ">
         <img
           src={article.image}
           alt={article.title}
-          className="w-full h-48 object-cover mb-4 rounded-2xl"
+          className="size-full object-cover mb-4 rounded-2xl"
         />
       </Link>
 
